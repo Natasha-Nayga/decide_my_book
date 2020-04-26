@@ -1,5 +1,5 @@
 
-
+import random
 import requests
 from bs4 import BeautifulSoup
 
@@ -30,14 +30,39 @@ soup = BeautifulSoup(response.content, features="lxml")
 
 
 title = soup.find_all(attrs={"data-rows": "1"})
+random_list = []
+
 
 for i in range(len(title)):
     #print (type(title[i]))
     #element_to_object = BeautifulSoup(title[i])
     element_to_object = title[i]
     result = element_to_object.get_text()
-    print (result)
+    stripped_list = result.lstrip("\n").rstrip("\n").strip()
+    random_list.append(stripped_list)
+    #stripped_list = random_list.strip("\n")
 
+    #print (result)
+
+#random.shuffle(random_list)
+#print (random_list)
+
+#stripped_list = random_list.strip("\n")
+#print (random.sample(stripped_list, k=1))
+print(random.sample(random_list, k=1))
+#print (random.sample(random_list, k=1))
+#random.sample(random_list, k=1)
+#print (random_list.strip("\n"))
+
+
+    #random_list = []
+    #random_list.append(result.rstrip("\n"))
+    #random.shuffle(random_list)
+    #print (random_list)
+    #print (random.shuffle(random_list))
+    #print (random.sample(random_list, k=1))
+    #print (new_list)
+    #print (random.shuffle(result))
 
 
 #[print (i) for i in title]
